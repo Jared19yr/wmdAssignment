@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Vacancies - Career Path Connect</title>
+    
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="logo.png" alt="Logo" class="site-logo-img" width="55" height="55">
+                    <div class="site-logo">Career Path <span>Connect</span></div>
+                </div>
+                
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navMenu">
+                        <ul class="navbar-nav ms-auto gap-3">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="job-vacancies.html">Job Vacancies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="new-job-listings.html">New Job Alerts</a></li>
+                            <li class="nav-item"><a class="nav-link" href="post-jobs.html">Post Jobs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="companies.html">Companies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.html">Log In</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-warning px-4" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="vacancies-container">
+        <h1 class="vacancies-title">Job Vacancies</h1>
+
+        <!-- Category Bubbles - Above everything -->
+        <div class="category-section">
+            <div class="category-label">Category</div>
+            <div class="category-buttons">
+                <button class="category-btn active">All Jobs</button>
+                <button class="category-btn">Management Jobs</button>
+                <button class="category-btn">IT Jobs</button>
+                <button class="category-btn">Sales Jobs</button>
+            </div>
+        </div>
+
+        <!-- Job Listings + Description Side by Side -->
+        <div class="row">
+            
+            <!-- Left: Job Cards -->
+            <div class="col-lg-5">
+                <div class="job-cards-container" id="jobCards"></div>
+            </div>
+
+            <!-- Right: Job Description -->
+            <div class="col-lg-7">
+                <div class="job-detail-box" id="jobDetail">
+                    <h3>Job Description In Detail</h3>
+                    <p class="text-muted mt-5">Click on a job card to see full details here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Career Path Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const jobs = [
+            {
+                title: "Software Developer",
+                company: "Tech Corp Botswana",
+                location: "Gaborone",
+                salary: "P12,000",
+                description: "We are looking for a passionate Software Developer to join our growing team."
+            },
+            {
+                title: "Data Analyst",
+                company: "Finance Plus",
+                location: "Francistown",
+                salary: "P8,500",
+                description: "Analyze financial data and create insightful reports."
+            },
+            {
+                title: "Marketing Officer",
+                company: "Botswana Telecom",
+                location: "Gaborone",
+                salary: "P10,000",
+                description: "Develop marketing strategies to grow our customer base."
+            }
+        ];
+
+        function displayJobs() {
+            const container = document.getElementById('jobCards');
+            container.innerHTML = '';
+
+            jobs.forEach(job => {
+                const cardHTML = `
+                    <div class="card mb-3 job-card">
+                        <div class="card-body">
+                            <h5>${job.title}</h5>
+                            <p class="text-muted">${job.company}</p>
+                            <p><strong>Location:</strong> ${job.location}</p>
+                            <p><strong>Salary:</strong> ${job.salary}/month</p>
+                            <button class="btn btn-primary btn-sm" onclick="showJobDetail('${job.title}', '${job.company}', '${job.location}', '${job.salary}', '${job.description}')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        function showJobDetail(title, company, location, salary, description) {
+            document.getElementById('jobDetail').innerHTML = `
+                <h4>${title}</h4>
+                <p><strong>Company:</strong> ${company}</p>
+                <p><strong>Location:</strong> ${location}</p>
+                <p><strong>Salary:</strong> ${salary} per month</p>
+                <hr>
+                <h5>Job Description</h5>
+                <p>${description}</p>
+                <button class="btn btn-success mt-4 w-100">Apply Now</button>
+            `;
+        }
+
+        window.onload = displayJobs;
+    </script>
+</body>
+</html>
