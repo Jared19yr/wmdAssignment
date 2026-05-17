@@ -777,3 +777,42 @@ h1, h2, h3, h4, .site-logo {
             color: white;
             transform: translateY(-2px);
         }
+
+        <---- feedback page styling --->
+  /* Foolproof HTML Unicode Star Styling */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            gap: 12px;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 40px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.15s ease-in-out;
+        }
+        /* Highlight stars when checked or hovered */
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffc107 !important;
+        }
+        
+        .role-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .role-card:hover {
+            border-color: #1a3c5e;
+            background-color: #f8f9fa;
+        }
+        .role-check:checked + .role-card {
+            border-color: #1a3c5e;
+            background-color: #eef4f9;
+        }
