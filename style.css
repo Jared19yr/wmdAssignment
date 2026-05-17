@@ -485,3 +485,199 @@ footer p {
             color: white;
             transform: translateY(-2px);
         }
+
+        <-- companie containers css -->
+
+        /* --- Global Container Overrides --- */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f8fafc;
+    color: #333;
+}
+
+h1, h2, h3, h4, .site-logo {
+    font-family: 'Poppins', sans-serif;
+}
+
+.companies-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-main-title {
+    color: #1a3c5e;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* --- Filter Tags Section (Matching Wireframe pill buttons) --- */
+.filter-scroll-container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    white-space: nowrap;
+}
+
+/* Custom scrollbar handling for a clean look */
+.filter-scroll-container::-webkit-scrollbar {
+    height: 5px;
+}
+.filter-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+.filter-pill-btn {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #4a5568;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-pill-btn:hover, .filter-pill-btn.active {
+    background-color: #2d6a9f;
+    border-color: #2d6a9f;
+    color: #ffffff;
+}
+
+/* --- Main Framework Container Box --- */
+.inner-directory-box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Company Row/Card Layout (Matching Wireframe) --- */
+.company-strip-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.company-strip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+    color: inherit;
+}
+
+.logo-placeholder-box {
+    width: 140px;
+    height: 100px;
+    background-color: #f1f5f9;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.logo-placeholder-box span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.company-strip-info {
+    flex-grow: 1;
+}
+
+.company-strip-info h3 {
+    color: #1a3c5e;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.company-strip-info p {
+    color: #4a5568;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.hiring-badge {
+    display: inline-block;
+    background-color: #e6f0fa;
+    color: #2d6a9f;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+/* --- Details Page Layout Additions --- */
+.back-directory-link {
+    display: inline-flex;
+    align-items: center;
+    color: #2d6a9f;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.back-directory-link:hover {
+    color: #1a3c5e;
+}
+
+.detail-header-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.detail-header-flex {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.detail-logo-box {
+    width: 160px;
+    height: 120px;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+.job-posting-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.job-posting-card:hover {
+    border-color: #2d6a9f;
+}

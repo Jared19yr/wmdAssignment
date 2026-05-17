@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Details - Career Path Connect</title>
+    
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="companies.css">
+</head>
+<body>
+
+    <header>
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="logo.png" alt="Logo" class="site-logo-img" width="55" height="55">
+                    <div class="site-logo">Career Path <span>Connect</span></div>
+                </div>
+                
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navMenu">
+                        <ul class="navbar-nav ms-auto gap-3">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="job-vacancies.html">Job Vacancies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="new-job-listings.html">New Job Alerts</a></li>
+                            <li class="nav-item"><a class="nav-link" href="post-jobs.html">Post Jobs</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="companies.html">Companies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.html">Log In</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-warning px-4" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="companies-wrapper">
+        <a href="companies.html" class="back-directory-link">← Back to Company Directory</a>
+
+        <div class="detail-header-card" id="companyHeaderContainer">
+            </div>
+
+        <h3 class="fw-bold mb-4" style="color: #1a3c5e;">Current Open Job Openings</h3>
+        <div id="companyPostingsContainer">
+            </div>
+    </div>
+
+    <footer>
+        <div class="container text-center">
+            <div class="d-flex justify-content-center gap-4 mb-2">
+                <a href="#" class="text-white text-decoration-none">FAQs</a>
+                <span class="text-secondary">|</span>
+                <a href="#" class="text-white text-decoration-none">About Us</a>
+                <span class="text-secondary">|</span>
+                <a href="#" class="text-white text-decoration-none">Contact</a>
+            </div>
+            <p class="mb-0">&copy; 2026 Career Path Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Profiles Map Object Dataset for all 8 companies
+        const profiles = {
+            "tech-corp": { name: "Tech Corp Botswana", sector: "Technology", desc: "Leading enterprise technology solutions provider specializing in agile applications infrastructure, systems architectures development, and cloud data platforms scaling locally.", image: "tech-corp.png" },
+            "finance-plus": { name: "Finance Plus", sector: "Finance", desc: "A premier financial analysis, investments strategies firm, and asset management partner built to scale operational growth models across corporate structures.", image: "finance-plus.png" },
+            "btcl": { name: "Botswana Telecom", sector: "Marketing", desc: "Connecting individuals and corporations across the country with world-class standard mobile telephony network systems, internet service, and enterprise communications pipelines.", image: "botswana-telecom.png" },
+            "logistics-co": { name: "Construction & Logistics Co.", sector: "Management", desc: "Managing full-scale structural industrial engineering build developments, transport logistics networks, and regional operations supply chains with excellence.", image: "construction-logistics.png" },
+            "innovative-sys": { name: "Botswana Innovative System", sector: "Technology", desc: "Pioneering state-of-the-art native software engineering architectures, machine intelligence pipelines, and creative tech incubators tailored across corporate operations.", image: "innovative-system.png" },
+            "kgale-investment": { name: "Kgale Investment Partners", sector: "Finance", desc: "Strategic investment advisors specializing in venture development funds portfolio management, wealth expansion pipelines, and secure financial asset backing options.", image: "kgale-investment.png" },
+            "sir-seretse": { name: "Sir Seretse Khama Airport Services", sector: "Aviation", desc: "Delivering world-class aviation logistical processing models, aircraft fleet support architectures, and international transit terminal management operations efficiently.", image: "airport-services.jpg" },
+            "mokolodi-safari": { name: "Mokolodi Safari Lodges", sector: "Hospitality", desc: "A premier eco-tourism wilderness destination offering luxurious wildlife accommodation spaces, professional reserve hosting assets, and cultural hospitality frameworks.", image: "mokolodi-safari.jpg" }
+        };
+
+        // Master Jobs Database mapping matching elements perfectly
+        const totalJobs = [
+            { title: "Software Developer", company: "Tech Corp Botswana", loc: "Gaborone", sal: "P12,000", exp: "2+ years", pathId: "tech-corp" },
+            { title: "Network Engineer", company: "Tech Corp Botswana", loc: "Gaborone", sal: "P12,500", exp: "3+ years", pathId: "tech-corp" },
+            { title: "UX Designer", company: "Tech Corp Botswana", loc: "Gaborone", sal: "P11,000", exp: "2+ years", pathId: "tech-corp" },
+            { title: "Data Analyst", company: "Finance Plus", loc: "Francistown", sal: "P8,500", exp: "3+ years", pathId: "finance-plus" },
+            { title: "Financial Analyst", company: "Finance Plus", loc: "Francistown", sal: "P11,000", exp: "4+ years", pathId: "finance-plus" },
+            { title: "Marketing Officer", company: "Botswana Telecom", loc: "Gaborone", sal: "P10,000", exp: "2 years", pathId: "btcl" },
+            { title: "Graphic Designer", company: "Botswana Telecom", loc: "Gaborone", sal: "P9,500", exp: "2+ years", pathId: "btcl" },
+            { title: "Project Manager", company: "Construction & Logistics Co.", loc: "Maun", sal: "P15,000", exp: "5+ years", pathId: "logistics-co" },
+            { title: "Sales Manager", company: "Construction & Logistics Co.", loc: "Maun", sal: "P13,000", exp: "5+ years", pathId: "logistics-co" },
+            { title: "Operations Manager", company: "Construction & Logistics Co.", loc: "Maun", sal: "P14,000", exp: "5+ years", pathId: "logistics-co" },
+            { title: "Software Engineer", company: "Botswana Innovative System", loc: "Gaborone", sal: "P14,000", exp: "3+ years", pathId: "innovative-sys" },
+            { title: "Data Scientist", company: "Botswana Innovative System", loc: "Francistown", sal: "P13,000", exp: "3+ years", pathId: "innovative-sys" },
+            { title: "Financial Controller", company: "Kgale Investment Partners", loc: "Gaborone", sal: "P15,000", exp: "7+ years", pathId: "kgale-investment" },
+            { title: "Account Manager", company: "Kgale Investment Partners", loc: "Gaborone", sal: "P10,000", exp: "3+ years", pathId: "kgale-investment" },
+            { title: "Customer Service Representative", company: "Sir Seretse Khama Airport Services", loc: "Gaborone", sal: "P7,000", exp: "1+ year", pathId: "sir-seretse" },
+            { title: "Content Strategist", company: "Sir Seretse Khama Airport Services", loc: "Francistown", sal: "P9,500", exp: "2+ years", pathId: "sir-seretse" },
+            { title: "Hotel Operations Guide", company: "Mokolodi Safari Lodges", loc: "Maun", sal: "P10,500", exp: "2+ years", pathId: "mokolodi-safari" }
+        ];
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const compId = urlParams.get('id') || "tech-corp";
+            const targetCompany = profiles[compId];
+
+            if(targetCompany) {
+                document.getElementById('companyHeaderContainer').innerHTML = `
+                    <div class="detail-header-flex flex-column flex-md-row text-center text-md-start">
+                        <div class="detail-logo-box" style="background: transparent; border: none;">
+                            <img src="${targetCompany.image}" alt="${targetCompany.name}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                            <h2 class="fw-bold text-dark mb-1">${targetCompany.name}</h2>
+                            <p class="text-primary fw-semibold mb-2">${targetCompany.sector} Sector Industry</p>
+                            <p class="text-muted mb-0">${targetCompany.desc}</p>
+                        </div>
+                    </div>
+                `;
+
+                const activePostings = totalJobs.filter(job => job.pathId === compId);
+                const postingsContainer = document.getElementById('companyPostingsContainer');
+                postingsContainer.innerHTML = '';
+
+                activePostings.forEach(job => {
+                    const actionUrl = `apply.html?job=${encodeURIComponent(job.title)}&company=${encodeURIComponent(job.company)}`;
+                    
+                    postingsContainer.innerHTML += `
+                        <div class="job-posting-card d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                            <div>
+                                <h4 class="fw-bold mb-1 text-dark" style="font-size: 19px;">${job.title}</h4>
+                                <div class="text-muted small">
+                                    <span class="me-3">📍 ${job.loc}</span> 
+                                    <span class="me-3">💰 ${job.sal} /mo</span> 
+                                    <span>⏳ ${job.exp} Experience</span>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="${actionUrl}" class="btn btn-outline-success px-4 btn-sm rounded-pill fw-bold">Apply Instantly</a>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        };
+    </script>
+</body>
+</html>
