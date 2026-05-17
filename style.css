@@ -391,3 +391,97 @@ footer p {
 .hero h1, .hero p {
     animation: fadeInUp 1s ease-out forwards;
 }
+
+/* ==================== application form Page ==================== */
+ .apply-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .apply-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        .apply-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 36px;
+            color: #1a3c5e;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .job-badge {
+            background-color: #e6f0fa;
+            color: #2d6a9f;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #2d6a9f;
+            box-shadow: 0 0 0 0.25rem rgba(45, 106, 159, 0.25);
+        }
+
+        /* --- DROP BOX STYLING FROM YOUR TEMPLATE --- */
+        .upload-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .drop-box {
+            border: 2px dashed #2d6a9f;
+            border-radius: 12px;
+            padding: 30px 20px;
+            background-color: #f8fafc;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .drop-box.dragover {
+            background-color: #e6f0fa;
+            border-color: #1a3c5e;
+        }
+
+        .drop-box p {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        .drop-box span {
+            font-size: 13px;
+            color: #718096;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            background-color: #2d6a9f;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1a3c5e;
+            color: white;
+            transform: translateY(-2px);
+        }

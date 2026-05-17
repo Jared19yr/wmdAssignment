@@ -44,14 +44,13 @@
     <div class="vacancies-container">
         <h1 class="vacancies-title">Job Vacancies</h1>
 
-        <!-- Category Bubbles - Above everything -->
         <div class="category-section">
-            <div class="category-label">Category</div>
+            <div class="category-label">Filter by Department:</div>
             <div class="category-buttons">
-                <button class="category-btn active">All Jobs</button>
-                <button class="category-btn">Management Jobs</button>
-                <button class="category-btn">IT Jobs</button>
-                <button class="category-btn">Sales Jobs</button>
+                <button class="category-btn active" onclick="filterCategory('all', this)">All Jobs</button>
+                <button class="category-btn" onclick="filterCategory('technology', this)">Technology</button>
+                <button class="category-btn" onclick="filterCategory('marketing', this)">Marketing</button>
+                <button class="category-btn" onclick="filterCategory('management', this)">Management</button>
             </div>
         </div>
 
@@ -77,46 +76,330 @@
         <p>&copy; 2026 Career Path Connect. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>                                                                                                                                              
     <script>
+        // Added 'category' properties to perfectly align with your category buttons
         const jobs = [
             {
                 title: "Software Developer",
                 company: "Tech Corp Botswana",
                 location: "Gaborone",
                 salary: "P12,000",
-                description: "We are looking for a passionate Software Developer to join our growing team."
+                description: "We are looking for a passionate Software Developer to join our growing team.",
+                qualification: "Bachelor's degree in Computer Science or related field.",
+                experience: "2+ years",
+                scarceSkill: "Proficiency in JavaScript and React.",
+                category: "technology"
             },
             {
                 title: "Data Analyst",
                 company: "Finance Plus",
                 location: "Francistown",
                 salary: "P8,500",
-                description: "Analyze financial data and create insightful reports."
+                description: "Analyze financial data and create insightful reports.",
+                qualification: "Bachelor's degree in Economics or related field.",
+                experience: "3+ years",
+                scarceSkill: "Proficiency in Python and SQL.",
+                category: "technology"
             },
             {
                 title: "Marketing Officer",
                 company: "Botswana Telecom",
                 location: "Gaborone",
                 salary: "P10,000",
-                description: "Develop marketing strategies to grow our customer base."
+                description: "Develop marketing strategies to grow our customer base.",
+                qualification: "Bachelor's degree in Marketing or related field.",
+                experience: "2",
+                scarceSkill: "Digital marketing expertise.",
+                category: "marketing"
+            },
+            {
+                title: "Project Manager",
+                company: "Construction Co.",
+                location: "Maun",
+                salary: "P15,000",
+                description: "Oversee construction projects from start to finish.",
+                qualification: "Bachelor's degree in Civil Engineering or related field.",
+                experience: "5+ years",
+                scarceSkill: "PMP certification.",
+                category: "management"
+            },
+            {
+                title: "HR Specialist",
+                company: "Retail Group",
+                location: "Gaborone",
+                salary: "P9,000",
+                description: "Manage recruitment and employee relations.",
+                qualification: "Bachelor's degree in Human Resources or related field.",
+                experience: "3+ years",
+                scarceSkill: "Experience with HRIS systems.",
+                category: "management"
+            },
+            {
+                title: "Financial Analyst",
+                company: "Investment Firm",
+                location: "Francistown",
+                salary: "P11,000",
+                description: "Evaluate financial data to assist in investment decisions.",
+                qualification: "Bachelor's degree in Finance or related field.",
+                experience: "4+ years",
+                scarceSkill: "CFA Level 1 certification.",
+                category: "management"
+            },
+            {
+                title: "Customer Service Representative",
+                company: "Airline Co.",
+                location: "Gaborone",
+                salary: "P7,000",
+                description: "Provide excellent customer service to airline passengers.",
+                qualification: "High school diploma or equivalent.",
+                experience: "1+ year",
+                scarceSkill: "Multilingual abilities.",
+                category: "management"
+            },
+            {
+                title: "Graphic Designer",
+                company: "Advertising Agency",
+                location: "Gaborone",
+                salary: "P9,500",
+                description: "Create visual concepts for advertising campaigns.",
+                qualification: "Bachelor's degree in Graphic Design or related field.",
+                experience: "2+ years",
+                scarceSkill: "Proficiency in Adobe Creative Suite.",
+                category: "marketing"
+            },
+            {
+                title: "Sales Manager",
+                company: "Automotive Dealer",
+                location: "Maun",
+                salary: "P13,000",
+                description: "Lead the sales team to achieve targets.",
+                qualification: "Bachelor's degree in Business or related field.",
+                experience: "5+ years",
+                scarceSkill: "Experience in automotive sales.",
+                category: "management"
+            },
+            {
+                title: "Network Engineer",
+                company: "IT Solutions",
+                location: "Gaborone",
+                salary: "P12,500",
+                description: "Design and maintain computer networks.",
+                qualification: "Bachelor's degree in Information Technology or related field.",
+                experience: "3+ years",
+                scarceSkill: "Cisco certifications.",
+                category: "technology"
+            },
+            {
+                title: "Content Writer",
+                company: "Media House",
+                location: "Francistown",
+                salary: "P8,000",
+                description: "Create engaging content for various platforms.",
+                qualification: "Bachelor's degree in Journalism or related field.",
+                experience: "2+ years",
+                scarceSkill: "SEO writing skills.",
+                category: "marketing"
+            },
+            {
+                title: "Accountant",
+                company: "Accounting Firm",
+                location: "Gaborone",
+                salary: "P10,500",
+                description: "Manage financial records and prepare reports.",
+                qualification: "Bachelor's degree in Accounting or related field.",
+                experience: "4+ years",
+                scarceSkill: "Experience with accounting software.",
+                category: "management"
+            },
+            {
+                title: "Operations Manager",
+                company: "Logistics Co.",
+                location: "Maun",
+                salary: "P14,000",
+                description: "Oversee daily operations and improve efficiency.",
+                qualification: "Bachelor's degree in Business or related field.",
+                experience: "5+ years",
+                scarceSkill: "Experience in logistics management.",
+                category: "management"
+            },
+            {
+                title: "UX Designer",
+                company: "Tech Start-up",
+                location: "Gaborone",
+                salary: "P11,000",
+                description: "Design user-friendly interfaces for our applications.",
+                qualification: "Bachelor's degree in Design or related field.",
+                experience: "2+ years",
+                scarceSkill: "Proficiency in UX design tools.",
+                category: "technology"
+            },
+            {
+                title: "Business Analyst",
+                company: "Consulting Firm",
+                location: "Gaborone",
+                salary: "P12,000",
+                description: "Analyze business processes and provide insights for improvement.",
+                qualification: "Bachelor's degree in Business or related field.",
+                experience: "3+ years",
+                scarceSkill: "Proficiency in data analysis tools.",
+                category: "management"
+            },
+            {
+                title: "Digital Marketing Specialist",
+                company: "E-commerce Co.",
+                location: "Gaborone",
+                salary: "P10,000",
+                description: "Develop and execute digital marketing campaigns.",
+                qualification: "Bachelor's degree in Marketing or related field.",
+                experience: "2+ years",
+                scarceSkill: "Experience with social media advertising.",
+                category: "marketing"
+            },
+            {
+                title: "Project Coordinator",
+                company: "Non-Profit Org.",
+                location: "Francistown",
+                salary: "P9,000",
+                description: "Coordinate projects and manage timelines.",
+                qualification: "Bachelor's degree in Project Management or related field.",
+                experience: "2+ years",
+                scarceSkill: "Experience with project management software.",
+                category: "management"
+            },
+            {
+                title: "HR Manager",
+                company: "Manufacturing Co.",
+                location: "Gaborone",
+                salary: "P13,000",
+                description: "Manage HR functions and employee relations.",
+                qualification: "Bachelor's degree in Human Resources or related field.",
+                experience: "5+ years",
+                scarceSkill: "Experience in labor law compliance.",
+                category: "management"
+            },
+            {
+                title: "Financial Controller",
+                company: "Investment Firm",
+                location: "Gaborone",
+                salary: "P15,000",
+                description: "Oversee financial operations and reporting.",
+                qualification: "Bachelor's degree in Finance or related field.",
+                experience: "7+ years",
+                scarceSkill: "CFA certification.",
+                category: "management"
+            },
+            {
+                title: "Customer Support Specialist",
+                company: "Tech Support Co.",
+                location: "Gaborone",
+                salary: "P8,500",
+                description: "Provide technical support to customers.",
+                qualification: "High school diploma or equivalent.",
+                experience: "1+ year",
+                scarceSkill: "Technical troubleshooting skills.",
+                category: "technology"
+            },
+            {
+                title: "Marketing Manager",
+                company: "Consumer Goods Co.",
+                location: "Gaborone",
+                salary: "P12,000",
+                description: "Lead marketing initiatives and campaigns.",
+                qualification: "Bachelor's degree in Marketing or related field.",
+                experience: "5+ years",
+                scarceSkill: "Proven track record in brand management.",
+                category: "marketing"
+            },
+            {
+                title: "Software Engineer",
+                company: "Tech Innovators",
+                location: "Gaborone",
+                salary: "P14,000",
+                description: "Design and develop software solutions.",
+                qualification: "Bachelor's degree in Computer Science or related field.",
+                experience: "3+ years",
+                scarceSkill: "Experience with cloud technologies.",
+                category: "technology"
+            },
+            {
+                title: "Data Scientist",
+                company: "Analytics Co.",
+                location: "Francistown",
+                salary: "P13,000",
+                description: "Analyze complex data sets to drive business decisions.",
+                qualification: "Bachelor's degree in Data Science or related field.",
+                experience: "3+ years",
+                scarceSkill: "Proficiency in machine learning algorithms.",
+                category: "technology"
+            },
+            {
+                title: "Sales Executive",
+                company: "Retail Group",
+                location: "Gaborone",
+                salary: "P9,000",
+                description: "Drive sales and build customer relationships.",
+                qualification: "Bachelor's degree in Business or related field.",
+                experience: "2+ years",
+                scarceSkill: "Strong negotiation skills.",
+                category: "marketing"
+            },
+            {
+                title: "Network Administrator",
+                company: "IT Solutions",
+                location: "Gaborone",
+                salary: "P11,000",
+                description: "Maintain and troubleshoot computer networks.",
+                qualification: "Bachelor's degree in Information Technology or related field.",
+                experience: "3+ years",
+                scarceSkill: "Experience with network security.",
+                category: "technology"
+            },
+            {
+                title: "Content Strategist",
+                company: "Media House",
+                location: "Francistown",
+                salary: "P9,500",
+                description: "Develop content strategies to engage audiences.",
+                qualification: "Bachelor's degree in Communications or related field.",
+                experience: "2+ years",
+                scarceSkill: "Experience with content management systems.",
+                category: "marketing"
+            },
+            {
+                title: "Account Manager",
+                company: "Advertising Agency",
+                location: "Gaborone",
+                salary: "P10,000",
+                description: "Manage client accounts and ensure satisfaction.",
+                qualification: "Bachelor's degree in Business or related field.",
+                experience: "3+ years",
+                scarceSkill: "Strong interpersonal skills.",
+                category: "marketing"
             }
         ];
 
-        function displayJobs() {
+        // Variable to track currently active filtered category (Defaults to 'all')
+        let currentCategory = 'all';
+
+        function displayJobs(categoryFilter = 'all') {
             const container = document.getElementById('jobCards');
             container.innerHTML = '';
 
-            jobs.forEach(job => {
+            jobs.forEach((job, index) => {
+                // If it doesn't match the selection, skip it
+                if (categoryFilter !== 'all' && job.category !== categoryFilter) {
+                    return; 
+                }
+
+                // Cleaned card template containing only Job Title, Company, and Location
                 const cardHTML = `
                     <div class="card mb-3 job-card">
                         <div class="card-body">
                             <h5>${job.title}</h5>
-                            <p class="text-muted">${job.company}</p>
-                            <p><strong>Location:</strong> ${job.location}</p>
-                            <p><strong>Salary:</strong> ${job.salary}/month</p>
-                            <button class="btn btn-primary btn-sm" onclick="showJobDetail('${job.title}', '${job.company}', '${job.location}', '${job.salary}', '${job.description}')">
+                            <p class="text-muted mb-2">${job.company}</p>
+                            <p class="mb-3"><strong>Location:</strong> ${job.location}</p>
+                            <button class="btn btn-primary btn-sm" onclick="showJobDetail(${index})">
                                 View Details
                             </button>
                         </div>
@@ -126,20 +409,71 @@
             });
         }
 
-        function showJobDetail(title, company, location, salary, description) {
+        function showJobDetail(index) {
+            const job = jobs[index];
+            
+            // Create the URL parameters safely using encodeURIComponent
+            const targetUrl = `apply.html?job=${encodeURIComponent(job.title)}&company=${encodeURIComponent(job.company)}`;
+            
             document.getElementById('jobDetail').innerHTML = `
-                <h4>${title}</h4>
-                <p><strong>Company:</strong> ${company}</p>
-                <p><strong>Location:</strong> ${location}</p>
-                <p><strong>Salary:</strong> ${salary} per month</p>
-                <hr>
-                <h5>Job Description</h5>
-                <p>${description}</p>
-                <button class="btn btn-success mt-4 w-100">Apply Now</button>
+                <div class="text-start">
+                    <h4>${job.title}</h4>
+                    <p><strong>Company:</strong> ${job.company}</p>
+                    <p><strong>Location:</strong> ${job.location}</p>
+                    <p><strong>Salary:</strong> ${job.salary} per month</p>
+                    <p><strong>Qualification:</strong> ${job.qualification}</p>
+                    <p><strong>Experience:</strong> ${job.experience}</p>
+                    <p><strong>Scarce-skill:</strong> ${job.scarceSkill}</p>
+                    <hr>
+                    <h5>Job Description</h5>
+                    <p>${job.description}</p>
+                    
+                    <!-- Fixed Button: Uses the pre-made targetUrl string safely without breaking backticks -->
+                    <button class="btn btn-success mt-4 w-100" onclick="window.location.href='${targetUrl}'">Apply Now</button>
+                </div>
             `;
         }
 
-        window.onload = displayJobs;
+        function filterCategory(category, buttonElement) {
+            currentCategory = category;
+
+            // Remove active class styling from all department buttons
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Set current clicked button to active status
+            buttonElement.classList.add('active');
+
+            // Reset the right-hand panel view to its default state when filters change
+            document.getElementById('jobDetail').innerHTML = `
+                <h3>Job Description In Detail</h3>
+                <p class="text-muted mt-5">Click on a job card to see full details here...</p>
+            `;
+
+            // Refresh displayed cards
+            displayJobs(category);
+        }
+
+        window.onload = function() {
+            displayJobs('all');
+        };
     </script>
+
+
+<!-- MOBILE DETAILS MODAL OVERLAY BOX -->
+    <div class="modal fade" id="mobileJobModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
+            <div class="modal-content" style="border-radius: 12px;">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold" id="mobileModalTitle" style="color: #1a3c5e;">Job Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="mobileModalBody">
+                    <!-- Dynamic Job Data Injected Here via Script -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

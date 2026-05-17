@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Job - Career Path Connect</title>
+    
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .apply-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .apply-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        .apply-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 36px;
+            color: #1a3c5e;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .job-badge {
+            background-color: #e6f0fa;
+            color: #2d6a9f;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #2d6a9f;
+            box-shadow: 0 0 0 0.25rem rgba(45, 106, 159, 0.25);
+        }
+
+        /* --- DROP BOX STYLING FROM YOUR TEMPLATE --- */
+        .upload-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .drop-box {
+            border: 2px dashed #2d6a9f;
+            border-radius: 12px;
+            padding: 30px 20px;
+            background-color: #f8fafc;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .drop-box.dragover {
+            background-color: #e6f0fa;
+            border-color: #1a3c5e;
+        }
+
+        .drop-box p {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        .drop-box span {
+            font-size: 13px;
+            color: #718096;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            background-color: #2d6a9f;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1a3c5e;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="logo.png" alt="Logo" class="site-logo-img" width="55" height="55">
+                    <div class="site-logo">Career Path <span>Connect</span></div>
+                </div>
+                
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navMenu">
+                        <ul class="navbar-nav ms-auto gap-3">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="job-vacancies.html">Job Vacancies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="new-job-listings.html">New Job Alerts</a></li>
+                            <li class="nav-item"><a class="nav-link" href="post-jobs.html">Post Jobs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="companies.html">Companies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.html">Log In</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-warning px-4" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- APPLICATION FORM CONTAINER -->
+    <div class="apply-container">
+        <div class="apply-card">
+            <h1 class="apply-title">Job Application</h1>
+            <div class="text-center">
+                <div class="job-badge" id="jobTargetBadge">Applying for: Loading Job Details...</div>
+            </div>
+
+            <form id="applicationForm" class="needs-validation" novalidate onsubmit="handleFormSubmit(event)">
+                
+                <!-- Personal Information Section -->
+                <h5 class="mb-3 text-secondary border-bottom pb-2">Personal Information</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label for="firstName" class="form-label">First Name *</label>
+                        <input type="text" class="form-control" id="firstName" required placeholder="e.g., Thabo">
+                        <div class="invalid-feedback">Please enter your first name.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lastName" class="form-label">Last Name *</label>
+                        <input type="text" class="form-control" id="lastName" required placeholder="e.g., Molosiwa">
+                        <div class="invalid-feedback">Please enter your last name.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="email" required placeholder="name@example.com">
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone Number *</label>
+                        <input type="tel" class="form-control" id="phone" required placeholder="e.g., +267 71000000">
+                        <div class="invalid-feedback">Please enter your phone number.</div>
+                    </div>
+                </div>
+
+                <!-- Professional details Section -->
+                <h5 class="mb-3 text-secondary border-bottom pb-2">Professional Profile</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label for="highestQual" class="form-label">Highest Qualification *</label>
+                        <select class="form-select" id="highestQual" required>
+                            <option value="" selected disabled>Choose qualification...</option>
+                            <option value="High School">High School Diploma</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="Bachelors">Bachelor's Degree</option>
+                            <option value="Masters">Master's Degree</option>
+                            <option value="PhD">PhD / Doctorate</option>
+                        </select>
+                        <div class="invalid-feedback">Please select your highest qualification.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="expYears" class="form-label">Years of Experience *</label>
+                        <input type="number" class="form-control" id="expYears" min="0" max="50" required placeholder="e.g., 3">
+                        <div class="invalid-feedback">Please provide valid years of experience.</div>
+                    </div>
+                    
+                    <!-- INTEGRATED DRAG AND DROP BOX FROM YOUR CODE -->
+                    <div class="col-12">
+                        <label class="form-label">Upload CV / Resume *</label>
+                        <section class="upload-section">
+                            <div class="drop-box" id="dropBox">
+                                <p class="mb-1">📄 Drag and drop your file here</p>
+                                <span>PDF, DOC, DOCX supported</span><br><br>
+                                
+                                <input type="file" id="cvFile" class="d-none" accept=".pdf,.doc,.docx" required>
+                                
+                                <button type="button" class="btn btn-primary" onclick="document.getElementById('cvFile').click()">
+                                    Choose File
+                                </button>
+                                <p id="fileName" class="mt-3 fw-bold text-primary"></p>
+                            </div>
+                            <div class="text-danger small mt-2 d-none" id="fileError">Please upload your CV/Resume to continue.</div>
+                        </section>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="coverLetter" class="form-label">Cover Letter / Statement *</label>
+                        <textarea class="form-control" id="coverLetter" rows="5" required placeholder="Briefly describe why you are a good fit for this role..."></textarea>
+                        <div class="invalid-feedback">Please provide a brief cover letter statement.</div>
+                    </div>
+                </div>
+
+                <!-- Submission Controls -->
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-submit">Submit Application</button>
+                    <a href="job-vacancies.html" class="btn btn-link text-muted text-center mt-2">Cancel and Go Back</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Career Path Connect. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Drop box drag-and-drop operational engine setup
+        const dropBox = document.getElementById('dropBox');
+        const fileInput = document.getElementById('cvFile');
+        const fileNameDisplay = document.getElementById('fileName');
+        const fileError = document.getElementById('fileError');
+
+        // Trigger safe styling changes when drag files pass over the container area
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropBox.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropBox.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropBox.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropBox.classList.remove('dragover');
+            }, false);
+        });
+
+        // Capture dropped item files directly from context environment
+        dropBox.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+
+            if (files.length > 0) {
+                fileInput.files = files; // Pass the dropped files to the hidden input
+                updateFileNameDisplay(files[0].name);
+            }
+        });
+
+        // Track changes if file was standard-picked from file system navigator window
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                updateFileNameDisplay(this.files[0].name);
+            }
+        });
+
+        function updateFileNameDisplay(name) {
+            fileNameDisplay.innerText = "Selected File: " + name;
+            fileError.classList.add('d-none'); // Hide errors if file matches requirements
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const jobTitle = urlParams.get('job');
+            const companyName = urlParams.get('company');
+            
+            const badgeElement = document.getElementById('jobTargetBadge');
+            
+            if (jobTitle && companyName) {
+                badgeElement.innerText = `Applying for: ${decodeURIComponent(jobTitle)} at ${decodeURIComponent(companyName)}`;
+            } else if (jobTitle) {
+                badgeElement.innerText = `Applying for: ${decodeURIComponent(jobTitle)}`;
+            } else {
+                badgeElement.innerText = "Applying for: General Application";
+            }
+        };
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('applicationForm');
+            
+            let isFileValid = true;
+            // Validate if file variable state holds item context values safely
+            if (fileInput.files.length === 0) {
+                fileError.classList.remove('d-none');
+                isFileValid = false;
+            }
+
+            if (!form.checkValidity() || !isFileValid) {
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+
+            alert("Success! Your application has been submitted safely to Career Path Connect. Good luck!");
+            window.location.href = "job-vacancies.html";
+        }
+    </script>
+</body>
+</html>
