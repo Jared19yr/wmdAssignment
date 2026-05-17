@@ -387,12 +387,10 @@
             container.innerHTML = '';
 
             jobs.forEach((job, index) => {
-                // If it doesn't match the selection, skip it
                 if (categoryFilter !== 'all' && job.category !== categoryFilter) {
                     return; 
                 }
 
-                // Cleaned card template containing only Job Title, Company, and Location
                 const cardHTML = `
                     <div class="card mb-3 job-card">
                         <div class="card-body">
@@ -411,11 +409,10 @@
 
         function showJobDetail(index) {
             const job = jobs[index];
-            
-            // Create the URL parameters safely using encodeURIComponent
             const targetUrl = `apply.html?job=${encodeURIComponent(job.title)}&company=${encodeURIComponent(job.company)}`;
             
-            document.getElementById('jobDetail').innerHTML = `
+            // Shared template data blueprint used for both views
+            const completeJobHTML = `
                 <div class="text-start">
                     <h4>${job.title}</h4>
                     <p><strong>Company:</strong> ${job.company}</p>
@@ -427,53 +424,41 @@
                     <hr>
                     <h5>Job Description</h5>
                     <p>${job.description}</p>
-                    
-                    <!-- Fixed Button: Uses the pre-made targetUrl string safely without breaking backticks -->
                     <button class="btn btn-success mt-4 w-100" onclick="window.location.href='${targetUrl}'">Apply Now</button>
                 </div>
             `;
+
+            // DUAL-VIEW ROUTER
+            if (window.innerWidth < 992) {
+                // MOBILE VIEW: Update and show the modal overlay popup
+                document.getElementById('mobileModalBody').innerHTML = completeJobHTML;
+                
+                const mobileModal = new Bootstrap.modal.Modal(document.getElementById('mobileJobModal'));
+                mobileModal.show();
+            } else {
+                // DESKTOP VIEW: Update the side panel as usual
+                document.getElementById('jobDetail').innerHTML = completeJobHTML;
+            }
         }
 
         function filterCategory(category, buttonElement) {
             currentCategory = category;
 
-            // Remove active class styling from all department buttons
             const buttons = document.querySelectorAll('.category-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Set current clicked button to active status
             buttonElement.classList.add('active');
 
-            // Reset the right-hand panel view to its default state when filters change
             document.getElementById('jobDetail').innerHTML = `
                 <h3>Job Description In Detail</h3>
                 <p class="text-muted mt-5">Click on a job card to see full details here...</p>
             `;
 
-            // Refresh displayed cards
             displayJobs(category);
         }
 
         window.onload = function() {
             displayJobs('all');
         };
-    </script>
-
-
-<!-- MOBILE DETAILS MODAL OVERLAY BOX -->
-    <div class="modal fade" id="mobileJobModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
-            <div class="modal-content" style="border-radius: 12px;">
-                <div class="modal-header bg-light">
-                    <h5 class="modal-title fw-bold" id="mobileModalTitle" style="color: #1a3c5e;">Job Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4" id="mobileModalBody">
-                    <!-- Dynamic Job Data Injected Here via Script -->
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 </html>
