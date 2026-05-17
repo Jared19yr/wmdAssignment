@@ -72,13 +72,27 @@
         </div>
     </div>
 
+    <!-- MOBILE DETAILS MODAL OVERLAY BOX -->
+    <div class="modal fade" id="mobileJobModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
+            <div class="modal-content" style="border-radius: 12px;">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold" id="mobileModalTitle" style="color: #1a3c5e;">Job Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="mobileModalBody">
+                    <!-- Dynamic Job Data Injected Here via Script -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 Career Path Connect. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>                                                                                                                                              
     <script>
-        // Added 'category' properties to perfectly align with your category buttons
         const jobs = [
             {
                 title: "Software Developer",
@@ -379,7 +393,6 @@
             }
         ];
 
-        // Variable to track currently active filtered category (Defaults to 'all')
         let currentCategory = 'all';
 
         function displayJobs(categoryFilter = 'all') {
@@ -411,7 +424,7 @@
             const job = jobs[index];
             const targetUrl = `apply.html?job=${encodeURIComponent(job.title)}&company=${encodeURIComponent(job.company)}`;
             
-            // Shared template data blueprint used for both views
+            // Layout blueprint structure
             const completeJobHTML = `
                 <div class="text-start">
                     <h4>${job.title}</h4>
@@ -419,7 +432,7 @@
                     <p><strong>Location:</strong> ${job.location}</p>
                     <p><strong>Salary:</strong> ${job.salary} per month</p>
                     <p><strong>Qualification:</strong> ${job.qualification}</p>
-                    <p><strong>Experience:</strong> ${job.experience}</p>
+                    <p><strong>Experience:</strong> ${job.experience} years</p>
                     <p><strong>Scarce-skill:</strong> ${job.scarceSkill}</p>
                     <hr>
                     <h5>Job Description</h5>
@@ -428,15 +441,15 @@
                 </div>
             `;
 
-            // DUAL-VIEW ROUTER
+            // DUAL-VIEW SCREEN ROUTER
             if (window.innerWidth < 992) {
-                // MOBILE VIEW: Update and show the modal overlay popup
+                // For Mobile view screen space sizes: Injects data and triggers popup modal box
                 document.getElementById('mobileModalBody').innerHTML = completeJobHTML;
                 
-                const mobileModal = new Bootstrap.modal.Modal(document.getElementById('mobileJobModal'));
+                const mobileModal = new bootstrap.Modal(document.getElementById('mobileJobModal'));
                 mobileModal.show();
             } else {
-                // DESKTOP VIEW: Update the side panel as usual
+                // For Desktop space sizes: Places content on right-side details panel context normally
                 document.getElementById('jobDetail').innerHTML = completeJobHTML;
             }
         }
@@ -459,6 +472,6 @@
         window.onload = function() {
             displayJobs('all');
         };
-
+    </script>
 </body>
 </html>
