@@ -1,158 +1,4 @@
-/* ===============================================
-   style.css - CAREER PATH CONNECT
-   Simple and clean CSS for beginners
-   =============================================== */
 
-/* Reset - removes default spacing */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f7fb;
-    color: #333;
-}
-
-/* Logo Styling */
-.site-logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #1a3c5e;
-}
-
-.site-logo span {
-    color: #f0a500;
-}
-
-/* Header */
-header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation Links */
-.navbar-nav .nav-link {
-    font-weight: 600;
-    color: #333;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-    color: #f0a500;
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
-    color: white;
-    text-align: center;
-    padding: 100px 20px 80px;
-}
-
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 30px;
-}
-
-/* Upload Section */
-.upload-section {
-    max-width: 650px;
-    margin: -50px auto 60px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    padding: 40px 30px;
-    text-align: center;
-}
-
-.drop-box {
-    border: 3px dashed #2d6a9f;
-    border-radius: 12px;
-    background-color: #f0f6ff;
-    padding: 50px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.drop-box:hover {
-    background-color: #e0f0ff;
-    border-color: #1a3c5e;
-}
-
-/* Buttons */
-.btn-primary {
-    background-color: #2d6a9f;
-}
-
-.cta-btn {
-    background-color: #f0a500;
-    color: #1a3c5e;
-    padding: 14px 40px;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 8px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.cta-btn:hover {
-    background-color: #d4920a;
-    transform: translateY(-3px);
-}
-
-/* Footer */
-footer {
-    background-color: #1a3c5e;
-    color: #8ab0d0;
-    text-align: center;
-    padding: 30px 20px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 32px;
-    }
-    .upload-section {
-        margin: 20px 15px;
-        padding: 30px 20px;
-    }
-}
-
-/* Push Login and Register group to the right */
-.auth-group {
-    margin-left: 50px !important ;     /* Change this number to control the gap */
-}
-
-/* Keep Login and Register close to each other */
-.auth-group .nav-link {
-    margin: 0 1px;
-    margin-left: 5px
-}
-
-/* Style for Register button */
-.auth-group .btn-warning {
-    padding: 8px 22px;
-    font-weight: 600;
-}
-
-
-
-/* ===============================================
-   style.css - CAREER PATH CONNECT
-   Consistent styling for all pages
-   =============================================== */
 
 * {
     margin: 0;
@@ -379,11 +225,11 @@ footer p {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px); /* Starts slightly lower down */
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);    /* Settles into its natural position */
+        transform: translateY(0);  
     }
 }
 
@@ -437,7 +283,7 @@ footer p {
             box-shadow: 0 0 0 0.25rem rgba(45, 106, 159, 0.25);
         }
 
-        /* --- DROP BOX STYLING FROM YOUR TEMPLATE --- */
+        
         .upload-section {
             text-align: center;
             margin-bottom: 25px;
@@ -683,7 +529,7 @@ h1, h2, h3, h4, .site-logo {
 }
 
 
-<---------- apply form styling ------>
+/*---------- apply form styling ---------*/
 
  .apply-container {
             max-width: 800px;
@@ -778,8 +624,8 @@ h1, h2, h3, h4, .site-logo {
             transform: translateY(-2px);
         }
 
-        <---- feedback page styling --->
-  /* Foolproof HTML Unicode Star Styling */
+        /*---------- feedback page styling ---------*/
+  
         .star-rating {
             display: flex;
             flex-direction: row-reverse;
