@@ -10,7 +10,46 @@
 </head>
 <body>
 
-<header class="custom-header"> <!-- Same header --> </header>
+    <!-- HEADER -->
+     <header>
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+
+                <!-- Logo + Image -->
+                <div class="d-flex align-items-center gap-3">
+                    <img src="logo.png" alt="Career Path Connect Logo" width="50" height="50">
+                    <div class="site-logo">Career Path <span>Connect</span></div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                   <div class="collapse navbar-collapse" id="navMenu">
+                        <ul class="navbar-nav ms-auto gap-3">
+
+                            <!-- Main Menu Navigation links -->
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="job-vacancies.html">Job Vacancies</a></li>
+                            <li class="nav-item"><a class="nav-link" href="new-job-listings.html">New Job Listings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="post-Jobs.html">Post Jobs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="companies.html">Companies</a></li>
+
+                            <!-- Login & Register - pushed to the right using CSS -->
+                            <li class="nav-item auth-group">
+                                <a class="nav-link" href="logIn.html">LogIn</a>
+                            </li>
+                            <li class="nav-item auth-group">
+                                <a class="nav-link btn btn-warning px-4" href="Pages/register.html">Register</a>
+                            </li>
+                          </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
 
 <div class="container my-5">
     <h1 class="text-center mb-5">Premium Subscription</h1>
@@ -35,6 +74,7 @@
 </div>
 
  <footer>
+     
         <p>&copy; 2026 Career Path Connect. All rights reserved.</p>
     </footer>
 
